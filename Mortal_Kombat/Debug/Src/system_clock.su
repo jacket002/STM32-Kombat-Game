@@ -1,0 +1,5 @@
+../Inc/core_cm4.h:1809:22:__NVIC_SetPriority	16	static
+../Src/system_clock.c:24:6:System_Clock_Init	16	static
+../Src/system_clock.c:90:6:SysTick_Initialize	16	static
+../Src/system_clock.c:123:6:SysTick_Handler	4	static
+../Src/system_clock.c:127:10:micros	4	static

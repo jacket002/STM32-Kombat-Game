@@ -1,0 +1,4 @@
+../Src/main.c:65:5:main	32	static
+../Src/main.c:133:6:I2C_Init	4	static
+../Src/main.c:171:6:draw_Player1	24	static
+../Src/main.c:219:6:draw_Player2	24	static
