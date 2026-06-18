@@ -1,5 +1,5 @@
 
-Mortal_Kombat.elf:     file format elf32-littlearm
+Mortal_Kombat_OneDrive.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -643,11 +643,11 @@ void controller_Init(void) {
  80005ae:	f04f 4290 	mov.w	r2, #1207959552	@ 0x48000000
  80005b2:	f423 437f 	bic.w	r3, r3, #65280	@ 0xff00
  80005b6:	60d3      	str	r3, [r2, #12]
-	GPIOA->PUPDR |= ((1UL << GPIO_PUPDR_PUPD4_Pos) | (1UL << GPIO_PUPDR_PUPD5_Pos) | (1UL << GPIO_PUPDR_PUPD6_Pos) | (1UL << GPIO_PUPDR_PUPD7_Pos));
+	GPIOA->PUPDR |= ((1UL << GPIO_PUPDR_PUPD4_Pos) | (1UL << GPIO_PUPDR_PUPD5_Pos) | (1UL << GPIO_PUPDR_PUPD6_Pos) | (3UL << GPIO_PUPDR_PUPD7_Pos));
  80005b8:	f04f 4390 	mov.w	r3, #1207959552	@ 0x48000000
  80005bc:	68db      	ldr	r3, [r3, #12]
  80005be:	f04f 4290 	mov.w	r2, #1207959552	@ 0x48000000
- 80005c2:	f443 43aa 	orr.w	r3, r3, #21760	@ 0x5500
+ 80005c2:	f443 4355 	orr.w	r3, r3, #54528	@ 0xd500
  80005c6:	60d3      	str	r3, [r2, #12]
 
 }
@@ -981,7 +981,7 @@ void game(void) {
  80007d6:	4b15      	ldr	r3, [pc, #84]	@ (800082c <game+0x19c>)
  80007d8:	2201      	movs	r2, #1
  80007da:	701a      	strb	r2, [r3, #0]
-			while (!(secondsElapsed == 2));
+			while (!(secondsElapsed == 2))
  80007dc:	bf00      	nop
  80007de:	4b15      	ldr	r3, [pc, #84]	@ (8000834 <game+0x1a4>)
  80007e0:	681b      	ldr	r3, [r3, #0]
@@ -1611,7 +1611,6 @@ void update_PlayerPhysics(playerData *player, uint8_t R1_Active, uint8_t S1_Acti
 
 	}
 
-
 	if (S1_Active) {
  8000be2:	78bb      	ldrb	r3, [r7, #2]
  8000be4:	2b00      	cmp	r3, #0
@@ -1626,9 +1625,9 @@ void update_PlayerPhysics(playerData *player, uint8_t R1_Active, uint8_t S1_Acti
  8000bf2:	687b      	ldr	r3, [r7, #4]
  8000bf4:	2202      	movs	r2, #2
  8000bf6:	f883 2024 	strb.w	r2, [r3, #36]	@ 0x24
+		}
 
 	}
-
 
 	// If button L1 is pressed
 	if (L1_Active) {
@@ -1664,7 +1663,7 @@ void update_PlayerPhysics(playerData *player, uint8_t R1_Active, uint8_t S1_Acti
  8000c20:	2b00      	cmp	r3, #0
  8000c22:	d00d      	beq.n	8000c40 <update_PlayerPhysics+0x9c>
 
-		if (player->state != JUMPING) {
+		if (!(player->state == JUMPING)) {
  8000c24:	687b      	ldr	r3, [r7, #4]
  8000c26:	f893 3024 	ldrb.w	r3, [r3, #36]	@ 0x24
  8000c2a:	2b01      	cmp	r3, #1

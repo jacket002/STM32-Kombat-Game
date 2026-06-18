@@ -1,0 +1,5 @@
+../Src/physics.c:20:6:update_PlayerPhysics	11
+../Src/physics.c:117:6:player_Stage	1
+../Src/physics.c:138:6:player_Jump	3
+../Src/physics.c:176:6:resolve_Collisions	5
+../Src/physics.c:201:6:draw_Player	1

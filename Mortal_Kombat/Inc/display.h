@@ -1,4 +1,4 @@
-#ifndef DSIPLAY_H
+#ifndef DISPLAY_H
 #define DISPLAY_H
 
 void IC2_Init(void);

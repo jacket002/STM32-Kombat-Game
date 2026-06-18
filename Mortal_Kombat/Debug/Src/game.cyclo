@@ -1,0 +1,5 @@
+../Src/game.c:28:6:game	9
+../Src/game.c:117:6:draw_HealthBar	1
+../Src/game.c:143:6:draw_MatchTime	2
+../Src/game.c:162:6:match_Reset	1
+../Src/game.c:186:6:tally	3

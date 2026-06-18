@@ -1,0 +1,5 @@
+../Src/game.c:28:6:game	16	static
+../Src/game.c:117:6:draw_HealthBar	32	static
+../Src/game.c:143:6:draw_MatchTime	24	static
+../Src/game.c:162:6:match_Reset	16	static
+../Src/game.c:186:6:tally	32	static

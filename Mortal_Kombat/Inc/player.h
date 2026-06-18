@@ -1,11 +1,17 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+// Player data struct
 typedef struct {
 
-	uint32_t xPos;
-	uint32_t yPos;
-	uint32_t yVel;
+	int32_t xPos;
+	int32_t yPos;
+	int32_t yVel;
+
+	int32_t leftEdge;
+	int32_t rightEdge;
+	int32_t topEdge;
+	int32_t bottomEdge;
 
 	uint8_t wins;
 	uint8_t health;
@@ -16,6 +22,7 @@ typedef struct {
 
 } playerData;
 
+// enumerator for player states
 typedef enum {
 	IDLE = 0,
 	JUMPING = 1,
@@ -25,6 +32,11 @@ typedef enum {
 } state ;
 
 
+#define PLAYER1_STARTING_X_POS 20
+#define PLAYER1_STARTING_Y_POS 50
+
+#define PLAYER2_STARTING_X_POS 65
+#define PLAYER2_STARTING_Y_POS 50
 
 void playerData_Init(playerData *player);
 
