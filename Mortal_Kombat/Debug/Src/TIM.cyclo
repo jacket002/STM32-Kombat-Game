@@ -1,0 +1,8 @@
+../Inc/core_cm4.h:1679:22:__NVIC_EnableIRQ	2
+../Inc/core_cm4.h:1809:22:__NVIC_SetPriority	2
+../Src/TIM.c:8:6:BUZZER_PIN_INIT	1
+../Src/TIM.c:24:6:TIM2_Init	1
+../Src/TIM.c:51:6:TIM3_Init	1
+../Src/TIM.c:68:6:TIM15_Init	1
+../Src/TIM.c:88:6:TIM3_IRQHandler	4
+../Src/TIM.c:113:6:TIM1_BRK_TIM15_IRQHandler	2

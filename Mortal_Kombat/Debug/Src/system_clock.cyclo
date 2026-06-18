@@ -2,4 +2,4 @@
 ../Src/system_clock.c:24:6:System_Clock_Init	5
 ../Src/system_clock.c:90:6:SysTick_Initialize	1
 ../Src/system_clock.c:123:6:SysTick_Handler	1
-../Src/system_clock.c:127:10:micros	1
+../Src/system_clock.c:127:10:millis	1

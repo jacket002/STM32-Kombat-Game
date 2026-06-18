@@ -1,5 +1,0 @@
-../Inc/core_cm4.h:1679:22:__NVIC_EnableIRQ	2
-../Src/TIM2.c:7:6:BUZZER_PIN_INIT	1
-../Src/TIM2.c:23:6:TIM2_Init	1
-../Src/TIM2.c:50:6:TIM3_Init	1
-../Src/TIM2.c:68:6:TIM3_IRQHandler	4

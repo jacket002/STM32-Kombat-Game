@@ -19,7 +19,7 @@
 
 #define RCC_PLLCFGR_PLLN (0x7FUL << 8) /*!< 0x00007F00 */
 
-volatile uint32_t sys_us;
+volatile uint32_t sys_ms;
 
 void System_Clock_Init(void) {
 
@@ -121,10 +121,10 @@ void SysTick_Initialize(int ticks) {
 
 // SysTick interrupt handler
 void SysTick_Handler(void) {
-	sys_us++;
+	sys_ms++;
 }
 
-uint32_t micros(void) {
-	return sys_us;
+uint32_t millis(void) {
+	return sys_ms;
 }
 

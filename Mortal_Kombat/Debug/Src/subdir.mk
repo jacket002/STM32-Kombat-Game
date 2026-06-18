@@ -7,10 +7,13 @@
 C_SRCS += \
 ../Src/ADC.c \
 ../Src/DMA.c \
-../Src/GPIO.c \
-../Src/TIM2.c \
+../Src/TIM.c \
+../Src/controller_GPIO.c \
+../Src/display.c \
+../Src/game_physics.c \
 ../Src/main.c \
 ../Src/mortalKombatLogo.c \
+../Src/player.c \
 ../Src/ssd1306_fonts.c \
 ../Src/ssd1306_nohal.c \
 ../Src/syscalls.c \
@@ -21,10 +24,13 @@ C_SRCS += \
 OBJS += \
 ./Src/ADC.o \
 ./Src/DMA.o \
-./Src/GPIO.o \
-./Src/TIM2.o \
+./Src/TIM.o \
+./Src/controller_GPIO.o \
+./Src/display.o \
+./Src/game_physics.o \
 ./Src/main.o \
 ./Src/mortalKombatLogo.o \
+./Src/player.o \
 ./Src/ssd1306_fonts.o \
 ./Src/ssd1306_nohal.o \
 ./Src/syscalls.o \
@@ -35,10 +41,13 @@ OBJS += \
 C_DEPS += \
 ./Src/ADC.d \
 ./Src/DMA.d \
-./Src/GPIO.d \
-./Src/TIM2.d \
+./Src/TIM.d \
+./Src/controller_GPIO.d \
+./Src/display.d \
+./Src/game_physics.d \
 ./Src/main.d \
 ./Src/mortalKombatLogo.d \
+./Src/player.d \
 ./Src/ssd1306_fonts.d \
 ./Src/ssd1306_nohal.d \
 ./Src/syscalls.d \
@@ -54,7 +63,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/ADC.cyclo ./Src/ADC.d ./Src/ADC.o ./Src/ADC.su ./Src/DMA.cyclo ./Src/DMA.d ./Src/DMA.o ./Src/DMA.su ./Src/GPIO.cyclo ./Src/GPIO.d ./Src/GPIO.o ./Src/GPIO.su ./Src/TIM2.cyclo ./Src/TIM2.d ./Src/TIM2.o ./Src/TIM2.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/mortalKombatLogo.cyclo ./Src/mortalKombatLogo.d ./Src/mortalKombatLogo.o ./Src/mortalKombatLogo.su ./Src/ssd1306_fonts.cyclo ./Src/ssd1306_fonts.d ./Src/ssd1306_fonts.o ./Src/ssd1306_fonts.su ./Src/ssd1306_nohal.cyclo ./Src/ssd1306_nohal.d ./Src/ssd1306_nohal.o ./Src/ssd1306_nohal.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/system_clock.cyclo ./Src/system_clock.d ./Src/system_clock.o ./Src/system_clock.su ./Src/themeSong.cyclo ./Src/themeSong.d ./Src/themeSong.o ./Src/themeSong.su
+	-$(RM) ./Src/ADC.cyclo ./Src/ADC.d ./Src/ADC.o ./Src/ADC.su ./Src/DMA.cyclo ./Src/DMA.d ./Src/DMA.o ./Src/DMA.su ./Src/TIM.cyclo ./Src/TIM.d ./Src/TIM.o ./Src/TIM.su ./Src/controller_GPIO.cyclo ./Src/controller_GPIO.d ./Src/controller_GPIO.o ./Src/controller_GPIO.su ./Src/display.cyclo ./Src/display.d ./Src/display.o ./Src/display.su ./Src/game_physics.cyclo ./Src/game_physics.d ./Src/game_physics.o ./Src/game_physics.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/mortalKombatLogo.cyclo ./Src/mortalKombatLogo.d ./Src/mortalKombatLogo.o ./Src/mortalKombatLogo.su ./Src/player.cyclo ./Src/player.d ./Src/player.o ./Src/player.su ./Src/ssd1306_fonts.cyclo ./Src/ssd1306_fonts.d ./Src/ssd1306_fonts.o ./Src/ssd1306_fonts.su ./Src/ssd1306_nohal.cyclo ./Src/ssd1306_nohal.d ./Src/ssd1306_nohal.o ./Src/ssd1306_nohal.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/system_clock.cyclo ./Src/system_clock.d ./Src/system_clock.o ./Src/system_clock.su ./Src/themeSong.cyclo ./Src/themeSong.d ./Src/themeSong.o ./Src/themeSong.su
 
 .PHONY: clean-Src
 

@@ -1,7 +1,8 @@
+#include <TIM.h>
 #include "stm32l476xx.h"
-#include "TIM2.h"
-volatile uint32_t msTicks;
 
+volatile uint32_t msTicks;
+volatile uint32_t secondsElapsed = 0;
 volatile uint32_t toggle = 0;
 
 void BUZZER_PIN_INIT(void) {
@@ -62,6 +63,25 @@ void TIM3_Init(void) {
 	NVIC_EnableIRQ(TIM3_IRQn); // Enable TIm3 interrupt in NVIC
 	TIM3->CR1 |= TIM_CR1_CEN; // enable timer
 
+}
+
+void TIM15_Init() {
+
+	// Enable the TIM15 clock in the APB2ENR
+	RCC->APB2ENR |= RCC_APB2ENR_TIM15EN;
+
+	// Divide 80 MHz to 10 kHz
+	TIM15->PSC = 7999;
+    // Count 10000 for 1 Hz (1 second)
+	TIM15->ARR = 9999;
+
+	// Enable update interrupts
+	TIM15->DIER |= TIM_DIER_UIE;
+	NVIC_EnableIRQ(TIM1_BRK_TIM15_IRQn); // Enable TIM15 interrupt in NVIC
+
+	NVIC_SetPriority(TIM1_BRK_TIM15_IRQn, 2);
+
+	TIM15->CR1 |= TIM_CR1_CEN; // enable match countdown (TIM15)
 
 }
 
@@ -85,8 +105,21 @@ void TIM3_IRQHandler(void) {
 
 			toggle = !toggle;
 
+		}
+
+
+}
+
+void TIM1_BRK_TIM15_IRQHandler(void) {
+
+	// Check if update interrupt flag is set
+		if (TIM15->SR & TIM_SR_UIF) {
+			TIM15->SR &= ~TIM_SR_UIF; // clear the interrupt flag
+
+			secondsElapsed++;
 
 		}
 
 
 }
+

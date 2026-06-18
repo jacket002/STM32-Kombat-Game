@@ -1,5 +1,5 @@
-#ifndef TIM2_H
-#define TIM2_H
+#ifndef TIM_H
+#define TIM_H
 // Function prototypes
 void TIM2_Init(void);
 void BUZZER_PIN_INIT(void);

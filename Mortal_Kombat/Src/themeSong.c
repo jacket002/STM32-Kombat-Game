@@ -1,5 +1,5 @@
+#include <TIM.h>
 #include "stm32l476xx.h"
-#include "TIM2.h"
 
 volatile uint32_t step = 0;
 volatile uint32_t transitionStep = 0;
@@ -121,7 +121,9 @@ void playSong(void) {
 							}
 
 						}
+
 					} else {
+
 						TIM3->ARR = 1749;
 						TIM3->PSC = 7199;
 					}
