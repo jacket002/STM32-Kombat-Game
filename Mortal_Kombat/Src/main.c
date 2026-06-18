@@ -28,7 +28,7 @@ volatile uint32_t player1_YVelocity = -6;
 // ==============================
 
 // =============================
-uint32_t player2_XCenter = 107;
+uint32_t player2_XCenter = 65;
 uint32_t player2_YCenter = 50;
 
 uint32_t player2_leftEdge = 0;
@@ -96,6 +96,9 @@ int main(void) {
 	ssd1306_DrawBitmap(0, 0, mortalKombatLogo.data, mortalKombatLogo.width,
 			mortalKombatLogo.height, White);
 	ssd1306_UpdateScreen();
+
+	player1.xPos = 20;
+	player1.yPos = 50;
 
 	for (int i = 0; i < (4 * 80000); i++)
 		;
@@ -228,9 +231,9 @@ void draw_Player1(void) {
 	// If the bit is 0, the button is physically pressed down
 	if (c1_R1_Active) {
 		// Move player to the right
-		player1_XCenter += 2;
-		player1_leftEdge = (player1_XCenter - 5);
-		player1_rightEdge = (player1_XCenter + 5);
+		player1.xPos += 2;
+		player1_leftEdge = (player1.xPos - 5);
+		player1_rightEdge = (player1.xPos + 5);
 
 	}
 
@@ -238,9 +241,9 @@ void draw_Player1(void) {
 	if (c1_L1_Active) {
 
 		// Move player to the left
-		player1_XCenter -= 2;
-		player1_rightEdge = (player1_XCenter + 5);
-		player1_leftEdge = (player1_XCenter - 5);
+		player1.xPos -= 2;
+		player1_rightEdge = (player1.xPos + 5);
+		player1_leftEdge = (player1.xPos - 5);
 
 	}
 
@@ -248,7 +251,7 @@ void draw_Player1(void) {
 	if (c1_J1_Active) {
 
 		if (!(player1.state == JUMPING)) {
-			player1_YVelocity = -8;
+			player1.yVel = -9;
 			player1.state = JUMPING;
 		}
 
@@ -260,40 +263,61 @@ void draw_Player1(void) {
 
 	} else {
 
-		player1_YCenter = (player1_YCenter);
-		player1_topEdge = (player1_YCenter - 5);
-		player1_bottomEdge = (player1_YCenter + 5);
+		player1.yPos = (player1.yPos);
+		player1_topEdge = (player1.yPos - 5);
+		player1_bottomEdge = (player1.yPos + 5);
 
 	}
 
 	if (player1_topEdge <= SCREEN_CEILING) {
 
 		player1_topEdge = SCREEN_CEILING;
-		player1_YCenter = player1_topEdge + 5;
-		player1_bottomEdge = player1_YCenter + 5;
+		player1.yPos = player1_topEdge + 5;
+		player1_bottomEdge = player1.yPos + 5;
 
 	}
 
 	if (player1_leftEdge <= 1) {
 		player1_leftEdge = 1;
-		player1_XCenter = player1_leftEdge + 5;
-		player1_rightEdge = player1_XCenter + 5;
+		player1.xPos = player1_leftEdge + 5;
+		player1_rightEdge = player1.xPos + 5;
 
 	} else if (player1_rightEdge >= 127) {
 		player1_rightEdge = 127;
-		player1_XCenter = player1_rightEdge - 5;
-		player1_leftEdge = player1_XCenter - 5;
+		player1.xPos = player1_rightEdge - 5;
+		player1_leftEdge = player1.xPos - 5;
 	}
 
-	if ((player1_rightEdge) >= (player2_leftEdge - 2)) {
+	if ((player1_rightEdge) >= (player2_leftEdge - 2) && (player1_leftEdge) <= (player2_rightEdge + 2)) {
 
 		if ((player1_bottomEdge) >= (player2_topEdge - 2)) {
-			player1_rightEdge = (player2_leftEdge - 2);
-			player1_XCenter = player1_rightEdge - 5;
-			player1_leftEdge = player1_XCenter - 5;
+
+			if (player1.xPos >= (player2_XCenter)) {
+
+				player1_leftEdge = (player2_rightEdge + 2);
+				player1.xPos = player1_leftEdge + 5;
+				player1_rightEdge = player1.xPos + 5;
+
+			} else {
+				player1_rightEdge = (player2_leftEdge - 2);
+				player1.xPos = player1_rightEdge - 5;
+				player1_leftEdge = player1.xPos - 5;
+			}
+
+
 		}
 
 	}
+
+	else if ((player1_leftEdge) <= (player2_rightEdge + 2) && (player1_rightEdge) >= (player2_leftEdge + 2)) {
+
+			if ((player1_bottomEdge) >= (player2_topEdge - 2)) {
+				player1_leftEdge = (player2_rightEdge + 2);
+				player1.xPos = player1_leftEdge + 5;
+				player1_rightEdge = player1.xPos + 5;
+			}
+
+		}
 
 	// Draw the current position frame and update screen
 	ssd1306_DrawRectangle(player1_leftEdge, player1_topEdge, player1_rightEdge, player1_bottomEdge, White);
@@ -363,14 +387,14 @@ void draw_MatchTime(void) {
 // Set player1 to starting match position
 void fix_Sprite1(void) {
 
-	player1_XCenter = 20;
+	player1.xPos = 20;
 
-	player1_rightEdge = player1_XCenter + 5;
-	player1_leftEdge = player1_XCenter - 5;
+	player1_rightEdge = player1.xPos + 5;
+	player1_leftEdge = player1.xPos - 5;
 
-	player1_YCenter = 50;
-	player1_topEdge = player1_YCenter - 5;
-	player1_bottomEdge = player1_YCenter + 5;
+	player1.yPos = 50;
+	player1_topEdge = player1.yPos - 5;
+	player1_bottomEdge = player1.yPos + 5;
 
 }
 
@@ -380,20 +404,20 @@ void player1_Jump(void) {
 	// If jumping state is 1
 	if (player1.state == JUMPING) {
 
-		player1_YCenter += player1_YVelocity;
+		player1.yPos += player1.yVel;
 
-		player1_YVelocity += 1;
+		player1.yVel += 1;
 
-		player1_topEdge = (player1_YCenter - 5);
-		player1_bottomEdge = (player1_YCenter + 5);
+		player1_topEdge = (player1.yPos - 5);
+		player1_bottomEdge = (player1.yPos + 5);
 
 		if (player1_bottomEdge >= SCREEN_FLOOR) {
 			player1.state = IDLE;
 
 			player1_bottomEdge = SCREEN_FLOOR;
-			player1_YCenter = (player1_bottomEdge - 5);
-			player1_topEdge = (player1_YCenter - 5);
-			player1_YVelocity = 0;
+			player1.yPos = (player1_bottomEdge - 5);
+			player1_topEdge = (player1.yPos - 5);
+			player1.yVel = 0;
 		}
 
 	}

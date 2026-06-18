@@ -1,9 +1,9 @@
 ../Src/main.c:82:5:main	24	static
-../Src/main.c:225:6:draw_Player1	24	static
-../Src/main.c:304:6:draw_Player2	24	static
-../Src/main.c:319:6:draw_HealthBar	32	static
-../Src/main.c:345:6:draw_MatchTime	24	static
-../Src/main.c:364:6:fix_Sprite1	4	static
-../Src/main.c:378:6:player1_Jump	4	static
-../Src/main.c:404:6:match_Reset	8	static
-../Src/main.c:423:6:tally	32	static
+../Src/main.c:228:6:draw_Player1	24	static
+../Src/main.c:328:6:draw_Player2	24	static
+../Src/main.c:343:6:draw_HealthBar	32	static
+../Src/main.c:369:6:draw_MatchTime	24	static
+../Src/main.c:388:6:fix_Sprite1	4	static
+../Src/main.c:402:6:player1_Jump	4	static
+../Src/main.c:428:6:match_Reset	8	static
+../Src/main.c:447:6:tally	32	static
