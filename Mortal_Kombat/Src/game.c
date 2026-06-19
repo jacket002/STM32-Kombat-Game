@@ -52,9 +52,13 @@ void game(void) {
 					player_Jump(&player1);
 				}
 
+				update_PlayerPhysics(&player1, c1_R1_Active, c1_S1_Active,
+						c1_L1_Active, c1_J1_Active);
+				update_PlayerPhysics(&player2, 0, 0, 0, 0);
 
-				update_PlayerPhysics(&player1, c1_R1_Active, c1_S1_Active, c1_L1_Active, c1_J1_Active);
 				resolve_Collisions(&player1, &player2);
+
+				update_PlayerDirections(&player1, &player2);
 
 				draw_Player(&player1);
 				draw_Player(&player2);
@@ -62,6 +66,8 @@ void game(void) {
 				draw_HealthBar();
 				draw_MatchTime();
 				tally();
+				//drawFloor();
+				//drawCeiling();
 
 				ssd1306_UpdateScreen();
 
@@ -89,7 +95,8 @@ void game(void) {
 			}
 
 			// 2 second delay before next match
-			while (!(secondsElapsed == 2));
+			while (!(secondsElapsed == 2))
+				;
 
 			// Reset secondsElapsed and match time
 			secondsElapsed = 0;
@@ -161,21 +168,12 @@ void draw_MatchTime(void) {
 // Resets match
 void match_Reset(void) {
 
+	reset_match_flag = 0;
+
 	ssd1306_Fill(Black);
 	draw_HealthBar();
 
-	player1.state = IDLE;
-	player2.state = IDLE;
-
-	player_Stage(&player1, &player2);
-
-	reset_match_flag = 0;
-
-	update_PlayerPhysics(&player1, c1_R1_Active, c1_S1_Active, c1_L1_Active, c1_J1_Active);
-	update_PlayerPhysics(&player2, 0, 0, 0, 0);
-
-	draw_Player(&player1);
-	draw_Player(&player2);
+	player_ResetGlobal();
 
 	draw_MatchTime();
 
@@ -207,3 +205,33 @@ void tally(void) {
 
 }
 
+void player_ResetGlobal() {
+
+	player1.state = IDLE;
+	player2.state = IDLE;
+
+	player1.health = 100;
+	player2.health = 100;
+
+	// Physical Initializations
+
+	player_Stage(&player1, &player2);  // Stage players in starting positions
+
+	update_PlayerPhysics(&player1, c1_R1_Active, c1_S1_Active, c1_L1_Active, // quick refresh of physics
+			c1_J1_Active);
+	update_PlayerPhysics(&player2, 0, 0, 0, 0);
+
+	update_PlayerDirections(&player1, &player2); // set & check player directions
+
+	// Draw both players on screen
+	draw_Player(&player1);
+	draw_Player(&player2);
+}
+
+void drawFloor(void) {
+	ssd1306_DrawRectangle(0, SCREEN_FLOOR - 2, 127, SCREEN_FLOOR + 2, White);
+}
+
+void drawCeiling(void) {
+	ssd1306_DrawRectangle(0, SCREEN_CEILING - 2, 127, SCREEN_CEILING + 2, White);
+}

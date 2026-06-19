@@ -1,5 +1,8 @@
-../Src/physics.c:20:6:update_PlayerPhysics	11
-../Src/physics.c:117:6:player_Stage	1
-../Src/physics.c:138:6:player_Jump	3
-../Src/physics.c:176:6:resolve_Collisions	5
-../Src/physics.c:201:6:draw_Player	1
+../Src/physics.c:12:6:update_PlayerPhysics	11
+../Src/physics.c:88:6:player_Stage	1
+../Src/physics.c:134:6:player_Jump	3
+../Src/physics.c:166:6:player_Attack	1
+../Src/physics.c:175:6:resolve_Collisions	5
+../Src/physics.c:203:6:update_PlayerDirections	3
+../Src/physics.c:217:6:draw_Player	4
+../Src/physics.c:253:6:inject_HitBox_Data	1

@@ -9,3 +9,6 @@ void playerData_Init(playerData *player) {
 
 }
 
+extern const characterProfile SCORPION;
+extern const characterProfile SUBZERO;
+

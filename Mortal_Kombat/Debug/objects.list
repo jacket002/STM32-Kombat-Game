@@ -8,6 +8,7 @@
 "./Src/mortalKombatLogo.o"
 "./Src/physics.o"
 "./Src/player.o"
+"./Src/sprites.o"
 "./Src/ssd1306_fonts.o"
 "./Src/ssd1306_nohal.o"
 "./Src/syscalls.o"

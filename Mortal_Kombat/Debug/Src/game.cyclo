@@ -1,5 +1,8 @@
 ../Src/game.c:28:6:game	9
-../Src/game.c:117:6:draw_HealthBar	1
-../Src/game.c:143:6:draw_MatchTime	2
-../Src/game.c:162:6:match_Reset	1
-../Src/game.c:186:6:tally	3
+../Src/game.c:124:6:draw_HealthBar	1
+../Src/game.c:150:6:draw_MatchTime	2
+../Src/game.c:169:6:match_Reset	1
+../Src/game.c:184:6:tally	3
+../Src/game.c:208:6:player_ResetGlobal	1
+../Src/game.c:231:6:drawFloor	1
+../Src/game.c:235:6:drawCeiling	1

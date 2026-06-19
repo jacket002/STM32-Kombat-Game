@@ -1,6 +1,21 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "sprites.h"
+
+typedef struct {
+
+	// frames array
+    uint32_t frameData[10];
+    // current character sprite
+    tSprite currentSprite;
+    // Hitbox dimensions
+    uint32_t boxWidth;
+    uint32_t boxHeight;
+
+} characterProfile;
+
+
 // Player data struct
 typedef struct {
 
@@ -20,6 +35,10 @@ typedef struct {
 
 	uint8_t inputHistory[4];
 
+	characterProfile character;
+
+	char playerDir;
+
 } playerData;
 
 // enumerator for player states
@@ -31,12 +50,11 @@ typedef enum {
 	CROUCHING = 4
 } state ;
 
-
 #define PLAYER1_STARTING_X_POS 20
-#define PLAYER1_STARTING_Y_POS 50
+#define PLAYER1_STARTING_Y_POS 55 - 6
 
 #define PLAYER2_STARTING_X_POS 65
-#define PLAYER2_STARTING_Y_POS 50
+#define PLAYER2_STARTING_Y_POS 55 - 6
 
 void playerData_Init(playerData *player);
 
