@@ -14,6 +14,8 @@
 #include "display.h"
 #include "player.h"
 #include "physics.h"
+#include "DMA.h"
+#include "ADC.h"
 
 volatile uint8_t input_detected_flag = 0;
 
@@ -42,6 +44,8 @@ int main(void) {
 	TIM2_Init();
 	TIM3_Init();
 	TIM15_Init();
+	ADC_Init();
+	DMA1_Init();
 	I2C_Init();
 	ssd1306_Init();
 	//ADC_Init();
@@ -54,14 +58,17 @@ int main(void) {
 
 	for (int i = 0; i < (4 * 80000); i++);
 
+	ADC1->ISR |= (ADC_ISR_OVR | ADC_ISR_EOS | ADC_ISR_EOC);
+
+	ADC1->CR |= ADC_CR_ADSTART;
+
 	while (1) {
 
 		// While user input isn't detected, loop intro
 		if (input_detected_flag == 0) {
 
 			// If any button from controller 1 is pressed, set input detected flag
-			if (!(GPIOA->IDR & GPIO_IDR_ID4) | !(GPIOA->IDR & GPIO_IDR_ID5)
-					| !(GPIOA->IDR & GPIO_IDR_ID6)) {
+			if (!(GPIOA->IDR & GPIO_IDR_ID7)) {
 				input_detected_flag = 1;
 
 			}

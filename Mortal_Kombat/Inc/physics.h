@@ -3,12 +3,14 @@
 
 #include "player.h"
 
-void update_PlayerPhysics(playerData *player, uint8_t R1_Active, uint8_t S1_Active, uint8_t L1_Active, uint8_t J1_Active);
+void update_PlayerPhysics(playerData *player, uint8_t S1_Active);
 void player_Stage(playerData *p1, playerData *p2);
 void player_Jump(playerData *player);
-void player_Attack(playerData *player);
+int player_Attack(playerData *player);
 void draw_Player(playerData *player);
 void update_PlayerDirections(playerData *p1, playerData *p2);
+void match_Combat_State(playerData *p1, playerData *p2, uint8_t p1_Strike_Frame_Active, uint8_t p2_Strike_Frame_Active);
+
 
 // Controller 1 GPIO definitions
 #define c1_L1_Active !(GPIOA->IDR & GPIO_IDR_ID5)

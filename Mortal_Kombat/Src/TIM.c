@@ -9,13 +9,13 @@ void BUZZER_PIN_INIT(void) {
 
 	RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN; // enable clock for port A
 
-	GPIOA->MODER &= ~(GPIO_MODER_MODE0); // clear
-	GPIOA->MODER |= (GPIO_MODER_MODE0_1); // set PA0 as alternate function (10)
+	GPIOA->MODER &= ~(GPIO_MODER_MODE5); // clear
+	GPIOA->MODER |= (GPIO_MODER_MODE5_1); // set PA5 as alternate function (10)
 
-	/* Set alternate function PA0 to TIM2_CH1
-	(Port A TIM2_CH1 uses AF1. PA0 is the lower echelon of pin bits, so TIM5 will use AFRL, AF2 (AFR[0])  */
-	GPIOA->AFR[0] &= ~(0xF << (0 * 4));  // clear PA0 bit field
-	GPIOA->AFR[0] |= (1 << (0 * 4)); // Set AF1 (TIM2)
+	/* Set alternate function PA5 to TIM2_CH1
+	(Port A TIM2_CH1 uses AF1. PA5 is the lower echelon of pin bits, so TIM2 will use AFRL, AF2 (AFR[0])  */
+	GPIOA->AFR[0] &= ~(0xF << (5 * 4));  // clear PA5 bit field
+	GPIOA->AFR[0] |= (1 << (5 * 4)); // Set AF1 (TIM2)
 
 }
 

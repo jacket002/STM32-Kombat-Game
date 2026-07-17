@@ -2669,6 +2669,7 @@ typedef struct
 #define CAN_MSR_SLAK_Msk       (0x1UL << CAN_MSR_SLAK_Pos)                     /*!< 0x00000002 */
 #define CAN_MSR_SLAK           CAN_MSR_SLAK_Msk                                /*!<Sleep Acknowledge */
 #define CAN_MSR_ERRI_Pos       (2U)
+
 #define CAN_MSR_ERRI_Msk       (0x1UL << CAN_MSR_ERRI_Pos)                     /*!< 0x00000004 */
 #define CAN_MSR_ERRI           CAN_MSR_ERRI_Msk                                /*!<Error Interrupt */
 #define CAN_MSR_WKUI_Pos       (3U)

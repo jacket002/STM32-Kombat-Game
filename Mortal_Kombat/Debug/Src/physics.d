@@ -3,7 +3,7 @@ Src/physics.o: ../Src/physics.c ../Inc/stm32l476xx.h ../Inc/core_cm4.h \
  ../Inc/mpu_armv7.h ../Inc/system_stm32l4xx.h ../Inc/ssd1306.h \
  ../Inc/ssd1306_conf.h ../Inc/ssd1306_fonts.h ../Inc/ssd1306.h \
  ../Inc/physics.h ../Inc/player.h ../Inc/sprites.h ../Inc/player.h \
- ../Inc/sprites.h
+ ../Inc/sprites.h ../Inc/DMA.h
 ../Inc/stm32l476xx.h:
 ../Inc/core_cm4.h:
 ../Inc/cmsis_version.h:
@@ -20,3 +20,4 @@ Src/physics.o: ../Src/physics.c ../Inc/stm32l476xx.h ../Inc/core_cm4.h \
 ../Inc/sprites.h:
 ../Inc/player.h:
 ../Inc/sprites.h:
+../Inc/DMA.h:

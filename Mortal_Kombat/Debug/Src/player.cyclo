@@ -1,1 +1,6 @@
 ../Src/player.c:5:6:playerData_Init	1
+../Src/player.c:13:5:character_Read_Frame_Data	1
+../Src/player.c:22:6:inject_HitBox_Data	3
+../Src/player.c:59:6:update_PlayerHealth	1
+../Src/player.c:67:5:evaluate_Results	3
+../Src/player.c:85:5:is_Match_Finished	3

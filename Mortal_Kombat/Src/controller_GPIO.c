@@ -1,5 +1,6 @@
 #include "controller_GPIO.h"
 #include "stm32l476xx.h"
+#include "player.h"
 
 void controller_Init(void) {
 	// 1. Enable clock for GPIOA
@@ -7,9 +8,6 @@ void controller_Init(void) {
 
 	// Set PA4 (X_right_ to digital input mode (00)
 	GPIOA->MODER &= ~(3UL << GPIO_MODER_MODE4_Pos);
-
-	// Set PA5 (X_left) to digital input mode (00)
-	GPIOA->MODER &= ~(3UL << GPIO_MODER_MODE5_Pos);
 
 	// Set PA6 (Y_jump) to digital input mode (00)
 	GPIOA->MODER &= ~(3UL << GPIO_MODER_MODE6_Pos);
@@ -22,6 +20,8 @@ void controller_Init(void) {
 	GPIOA->PUPDR |= ((1UL << GPIO_PUPDR_PUPD4_Pos) | (1UL << GPIO_PUPDR_PUPD5_Pos) | (1UL << GPIO_PUPDR_PUPD6_Pos) | (1UL << GPIO_PUPDR_PUPD7_Pos));
 
 }
+
+
 
 
 

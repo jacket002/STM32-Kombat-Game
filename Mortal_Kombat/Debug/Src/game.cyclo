@@ -1,8 +1,8 @@
-../Src/game.c:28:6:game	9
-../Src/game.c:124:6:draw_HealthBar	1
-../Src/game.c:150:6:draw_MatchTime	2
-../Src/game.c:169:6:match_Reset	1
-../Src/game.c:184:6:tally	3
-../Src/game.c:208:6:player_ResetGlobal	1
-../Src/game.c:231:6:drawFloor	1
-../Src/game.c:235:6:drawCeiling	1
+../Src/game.c:29:6:game	19
+../Src/game.c:159:6:draw_HealthBar	5
+../Src/game.c:208:6:draw_MatchTime	2
+../Src/game.c:227:6:match_Reset	1
+../Src/game.c:242:6:tally	3
+../Src/game.c:266:6:player_ResetGlobal	1
+../Src/game.c:288:6:drawFloor	1
+../Src/game.c:292:6:drawCeiling	1

@@ -1,8 +1,8 @@
-../Src/game.c:28:6:game	16	static
-../Src/game.c:124:6:draw_HealthBar	32	static
-../Src/game.c:150:6:draw_MatchTime	24	static
-../Src/game.c:169:6:match_Reset	8	static
-../Src/game.c:184:6:tally	32	static
-../Src/game.c:208:6:player_ResetGlobal	16	static
-../Src/game.c:231:6:drawFloor	16	static
-../Src/game.c:235:6:drawCeiling	16	static
+../Src/game.c:29:6:game	24	static
+../Src/game.c:159:6:draw_HealthBar	48	static
+../Src/game.c:208:6:draw_MatchTime	24	static
+../Src/game.c:227:6:match_Reset	8	static
+../Src/game.c:242:6:tally	32	static
+../Src/game.c:266:6:player_ResetGlobal	8	static
+../Src/game.c:288:6:drawFloor	16	static
+../Src/game.c:292:6:drawCeiling	16	static
